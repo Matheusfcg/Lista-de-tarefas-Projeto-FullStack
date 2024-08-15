@@ -1,0 +1,20 @@
+{
+    "editor.formatOnsave":true,
+    "python.formatting.provider":"black",
+    "editor.defaultformatter":"ms-python.black-formatter",
+    "workbench.iconTheme": "material-icon-theme",
+    "workbench.startupEditor": "welcomePageInEmptyWorkbench",
+    "files.autoSave": "afterDelay",
+    "editor.minimap.enabled": false,
+    "files.associations": {
+        "**/templates/**/*.html": "django-html"
+    },
+    "emmet.includeLanguages": {
+        "django-html": "html"
+    },
+    
+    "explorer.compactFolders": false,
+    "workbench.editor.enablePreview": false,
+    "workbench.colorTheme": "Omni",
+    "editor.fontSize": 10
+}
