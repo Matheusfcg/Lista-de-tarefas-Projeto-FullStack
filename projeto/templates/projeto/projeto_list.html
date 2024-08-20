@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+
+{% block page_titlle %}
+    Lista de Tarefas
+{% endblock page_titlle %}
+
+{% block content %}
+    
+            <h1>Suas tarefas disponíveis </h1>
+        {% if projeto_list %}
+                <table class="table p-3">
+                    <thead>
+                    <tr>
+                        <th scope="col">N</th>
+                        <th scope="col">Títulos</th>
+                        <th scope="col">Criado em</th>
+                        <th scope="col">Data de entrega</th>
+                        <th scope="col">Finalizado em</th>
+                        <th scope="col">Ações</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        
+                        {% for projeto in projeto_list %}
+                            <tr>
+                                <th scope="row">{{ projeto.pk }}</th>
+                                <td>{{ projeto.titlle }}</td>
+                                <td>{{ projeto.created_at }}</td>
+                                <td>{{ projeto.deadline }}</td>
+                                <td>{{ projeto.finished_at | default:"-" }}</td>
+                                <td>
+                                    <a 
+                                    href="{% url 'projeto_complete' pk=projeto.pk %}" 
+                                    class="btn btn-primary btn-sm{% if ptojeto.finished_at %}disabled{% endif %}"
+                                >
+                                    Concluir
+                                </a>
+                                    <a 
+                                    href="{% url 'projeto_update' pk=projeto.pk %}" 
+                                    class = "btn btn-secondary btn-sm {% if ptojeto.finished_at %}disabled{% endif %}"
+                                >
+                                    Editar
+                                </a>
+                                    <a href="{% url 'projeto_delete' pk=projeto.pk %}" class="btn btn-danger btn-sm">Excluir</a>
+                                </td>
+                            </tr>
+                        {% endfor %}  
+                    </tbody>
+                </table>
+            {%else%}     
+                <p>Não há tarefas cadastradas</p> 
+            {% endif %}
+            <a href = "{% url 'projeto_create' %}" class ="btn btn-primary" >Nova tarefa</a>
+    </main>
+
+{% endblock content %}
